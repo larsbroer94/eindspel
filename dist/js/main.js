@@ -145,6 +145,12 @@ var Game = (function () {
         this.signCreator();
         requestAnimationFrame(function () { return _this.gameLoop(); });
     }
+    Game.getInstance = function () {
+        if (!Game.instance) {
+            Game.instance = new Game();
+        }
+        return Game.instance;
+    };
     Game.prototype.gameLoop = function () {
         var _this = this;
         this.bird.update();
@@ -181,7 +187,7 @@ var Game = (function () {
     return Game;
 }());
 window.addEventListener("load", function () {
-    new Game();
+    Game.getInstance();
 });
 var TrafficLight = (function (_super) {
     __extends(TrafficLight, _super);

@@ -8,8 +8,18 @@ class Game {
 
     private score : number = 0;
     private activeGame : boolean = true;
+
+    public static instance : Game;
+
+    public static getInstance() : Game {
+
+        if (!Game.instance) {
+            Game.instance = new Game();
+        }
+        return Game.instance;
+    }
     
-    constructor() {
+    private constructor() {
         this.bird = new Bird(); // 'this' niet meer meegegeven, werd niet gebruikt.
         this.signCreator();
         requestAnimationFrame(() => this.gameLoop());
@@ -68,5 +78,5 @@ class Game {
 
 // load
 window.addEventListener("load", function() {
-    new Game(); // Singleton van maken?
+    Game.getInstance();
 });
