@@ -6,9 +6,6 @@ class TrafficObject extends GameObject {
     private yPos    : number    = 0;
     private g       : Game      ;
     private tag     : string    ;
-
-    public width    : number    = 0;
-    public height   : number    = 0;
                         
     constructor(tag : string, yPos : number, g : Game) {
         super(tag, document.getElementById("container"));

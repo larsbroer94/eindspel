@@ -4,6 +4,9 @@ class GameObject {
     private _y : number = 0;
     private _div : HTMLElement;
 
+    public width    : number    = 0;
+    public height   : number    = 0;
+
     public get x(): number          {   return this._x;   }
     public set x(value: number)     {   this._x = value;  }
 
