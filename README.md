@@ -118,6 +118,17 @@ je colision werkt nu want hij detecteerd of je een object raakt. Je moet er alle
 
 Als je van je colision detectie een aparte class maakt kan je die voor alle botsingen gebruiken die er gebeuren in het spel. zodat je maar een keer een colision dectection hoeft te maken. Daar kan je 2 objecten heen sturen waarvan je wil kijken of ze elkaar rakken. 
 
+# Aangepast in code
+Ik heb in gameObject speed height en witdh toegevoegd zodat die ook ge extend worden.
+
+een game.ts gemaakt en een main.ts
+
+In game.ts een de evt code voor singelthon
+
+
+
+
+
 
 
 

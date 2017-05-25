@@ -2,22 +2,26 @@
 
 class TrafficObject extends GameObject {
 
-    private speed   : number    = 0;
+    //private speed   : number    = 0;
     private yPos    : number    = 0;
     private g       : Game      ;
     private tag     : string    ;
 
-    public width    : number    = 0;
-    public height   : number    = 0;
+    //public width    : number    = 0;
+    //public height   : number    = 0;
                         
     constructor(tag : string, yPos : number, g : Game) {
         super(tag, document.getElementById("container"));
+
 
         this.tag = tag;
         this.speed = 4;
         this.y = this.yPos = yPos;
         this.g = g;
         this.x = 800;
+
+        this.width = 0;
+        this.height = 0;
 
         this.move();
 

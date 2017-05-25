@@ -2,12 +2,12 @@
 
 class Bird extends GameObject {
 
-    private speed: number;
+    //private speed: number;
     private game: Game;
     private crashed: boolean;
 
-    public width: number = 150;
-    public height: number = 120;
+    //public width: number = 150;
+    //public height: number = 120;
 
     private downkey: number = 40;
     private upkey: number = 38;
@@ -24,6 +24,9 @@ class Bird extends GameObject {
         this.game = g;
         this.x = 50;
         this.y = 100;
+
+        this.width = 150;
+        this.height = 120;
 
         // hier een keypress event listener toevoegen. een keypress zorgt dat braking true wordt
         window.addEventListener("keydown", this.onKeyDown.bind(this));
