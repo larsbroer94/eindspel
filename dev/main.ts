@@ -8,9 +8,19 @@ class Game {
 
     private score : number = 0;
     private activeGame : boolean = true;
+
+    public static instance : Game;
+
+    public static getInstance() : Game {
+
+        if (!Game.instance) {
+            Game.instance = new Game();
+        }
+        return Game.instance;
+    }
     
-    constructor() {
-        this.bird = new Bird(this);
+    private constructor() {
+        this.bird = new Bird(); // 'this' niet meer meegegeven, werd niet gebruikt.
         this.signCreator();
         requestAnimationFrame(() => this.gameLoop());
     }
@@ -55,7 +65,9 @@ class Game {
         }
     }
 
-    collisionCheck(c1:TrafficObject, c2:Bird): boolean {
+    // Changed type to GameObject, so you can check any object against any other object.
+    // Also moved width/height properties to GameObject class.
+    collisionCheck(c1:GameObject, c2:GameObject): boolean {
         return !(c2.x > c1.x + c1.width || 
                  c2.x + c2.width < c1.x || 
                  c2.y > c1.y + c1.height || 
@@ -66,5 +78,5 @@ class Game {
 
 // load
 window.addEventListener("load", function() {
-    new Game();
+    Game.getInstance();
 });

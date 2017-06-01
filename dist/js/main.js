@@ -1,17 +1,14 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var GameObject = (function () {
     function GameObject(tag, parent) {
         this._x = 0;
         this._y = 0;
+        this.width = 0;
+        this.height = 0;
         this.div = document.createElement(tag);
         parent.appendChild(this.div);
     }
@@ -35,57 +32,70 @@ var GameObject = (function () {
     });
     return GameObject;
 }());
+var appVars = (function () {
+    function appVars() {
+    }
+    appVars.keys = {
+        UP: 38,
+        DOWN: 40,
+        LEFT: 37,
+        RIGHT: 39,
+    };
+    appVars.speeds = {
+        UP: 7,
+        DOWN: 7,
+        LEFT: 10,
+        RIGHT: 5,
+        IDLE: 0,
+    };
+    return appVars;
+}());
 var Bird = (function (_super) {
     __extends(Bird, _super);
-    function Bird(g) {
-        var _this = _super.call(this, "bird", document.getElementById("container")) || this;
-        _this.width = 150;
-        _this.height = 120;
-        _this.downkey = 40;
-        _this.upkey = 38;
-        _this.leftkey = 37;
-        _this.rightkey = 39;
-        _this.downSpeed = 0;
-        _this.upSpeed = 0;
-        _this.leftSpeed = 0;
-        _this.rightSpeed = 0;
-        _this.game = g;
-        _this.x = 50;
-        _this.y = 100;
-        window.addEventListener("keydown", _this.onKeyDown.bind(_this));
-        window.addEventListener("keyup", _this.onKeyUp.bind(_this));
-        _this.div.style.transform = "translate(" + _this.x + "px,100px)";
-        return _this;
+    function Bird() {
+        var _this = this;
+        _super.call(this, "bird", document.getElementById("container"));
+        this.downSpeed = 0;
+        this.upSpeed = 0;
+        this.leftSpeed = 0;
+        this.rightSpeed = 0;
+        this.x = 50;
+        this.y = 100;
+        this.width = 150;
+        this.height = 120;
+        window.addEventListener("keydown", function (e) { return _this.onKeyDown(e); });
+        window.addEventListener("keyup", function (e) { return _this.onKeyUp(e); });
+        this.div.style.transform = "translate(" + this.x + "px,100px)";
     }
     Bird.prototype.onKeyDown = function (event) {
         switch (event.keyCode) {
-            case this.upkey:
-                this.upSpeed = 7;
+            case appVars.keys.UP:
+                this.upSpeed = appVars.speeds.UP;
                 break;
-            case this.downkey:
-                this.downSpeed = 7;
+            case appVars.keys.DOWN:
+                this.downSpeed = appVars.speeds.DOWN;
                 break;
-            case this.leftkey:
-                this.leftSpeed = 10;
+            case appVars.keys.LEFT:
+                this.leftSpeed = appVars.speeds.LEFT;
                 break;
-            case this.rightkey:
-                this.rightSpeed = 5;
+            case appVars.keys.RIGHT:
+                this.rightSpeed = appVars.speeds.RIGHT;
                 break;
         }
     };
     Bird.prototype.onKeyUp = function (event) {
         switch (event.keyCode) {
-            case this.upkey:
-                this.upSpeed = 0;
+            case appVars.keys.UP:
+                this.upSpeed = appVars.speeds.IDLE;
                 break;
-            case this.downkey:
-                this.downSpeed = 0;
+            case appVars.keys.DOWN:
+                this.downSpeed = appVars.speeds.IDLE;
                 break;
-            case this.leftkey:
-                this.leftSpeed = 0;
+            case appVars.keys.LEFT:
+                this.leftSpeed = appVars.speeds.IDLE;
                 break;
-            case this.rightkey:
-                this.rightSpeed = 0;
+            case appVars.keys.RIGHT:
+                this.rightSpeed = appVars.speeds.IDLE;
                 break;
         }
     };
@@ -106,18 +116,15 @@ var Bird = (function (_super) {
 var TrafficObject = (function (_super) {
     __extends(TrafficObject, _super);
     function TrafficObject(tag, yPos, g) {
-        var _this = _super.call(this, tag, document.getElementById("container")) || this;
-        _this.speed = 0;
-        _this.yPos = 0;
-        _this.width = 0;
-        _this.height = 0;
-        _this.tag = tag;
-        _this.speed = 4;
-        _this.y = _this.yPos = yPos;
-        _this.g = g;
-        _this.x = 800;
-        _this.move();
-        return _this;
+        _super.call(this, tag, document.getElementById("container"));
+        this.speed = 0;
+        this.yPos = 0;
+        this.tag = tag;
+        this.speed = 4;
+        this.y = this.yPos = yPos;
+        this.g = g;
+        this.x = 800;
+        this.move();
     }
     TrafficObject.prototype.move = function () {
         this.x -= this.speed;
@@ -134,10 +141,16 @@ var Game = (function () {
         var _this = this;
         this.score = 0;
         this.activeGame = true;
-        this.bird = new Bird(this);
+        this.bird = new Bird();
         this.signCreator();
         requestAnimationFrame(function () { return _this.gameLoop(); });
     }
+    Game.getInstance = function () {
+        if (!Game.instance) {
+            Game.instance = new Game();
+        }
+        return Game.instance;
+    };
     Game.prototype.gameLoop = function () {
         var _this = this;
         this.bird.update();
@@ -174,25 +187,23 @@ var Game = (function () {
     return Game;
 }());
 window.addEventListener("load", function () {
-    new Game();
+    Game.getInstance();
 });
 var TrafficLight = (function (_super) {
     __extends(TrafficLight, _super);
     function TrafficLight(g) {
-        var _this = _super.call(this, "trafficlight", 0, g) || this;
-        _this.width = 149;
-        _this.height = 200;
-        return _this;
+        _super.call(this, "trafficlight", 0, g);
+        this.width = 149;
+        this.height = 200;
     }
     return TrafficLight;
 }(TrafficObject));
 var TrafficSign = (function (_super) {
     __extends(TrafficSign, _super);
     function TrafficSign(g) {
-        var _this = _super.call(this, "trafficsign", 310, g) || this;
-        _this.width = 204;
-        _this.height = 204;
-        return _this;
+        _super.call(this, "trafficsign", 310, g);
+        this.width = 204;
+        this.height = 204;
     }
     return TrafficSign;
 }(TrafficObject));
