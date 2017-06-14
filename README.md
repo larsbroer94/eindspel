@@ -16,25 +16,27 @@ Wat op dit moment af is:
 # Vereisten
 - [x] Klassendiagram
 - [x] Speelbare game met begin en eind, zonder bugs
-- [x] Gebruik een Library
-- [x] encapsulation, composition, inheritance (PRG 4)
-- [x] Singleton
-- [x] Observer
-- [x] Strategy
-- [x] interface
-- [x] static
-- [x] abstract
-- [x] namespaces
-- [x] polymorphism
-- [x] enumeraties
-- [x] Game Loop
+- [x] [Library](https://github.com/larsbroer94/eindspel#library)
+- [x] [Encapsulation](https://github.com/larsbroer94/eindspel#encapsulation)
+- [x] [Inheritance](https://github.com/larsbroer94/eindspel#inheritance)
+- [x] [Singleton](https://github.com/larsbroer94/eindspel#singleton)
+- [x] [Observer](https://github.com/larsbroer94/eindspel#observer)
+- [x] [Strategy Pattern](https://github.com/larsbroer94/eindspel#strategy-pattern)
+- [x] [Interface](https://github.com/larsbroer94/eindspel#interface)
+- [x] [Static](https://github.com/larsbroer94/eindspel#static-utility-method)
+- [x] [Abstract](https://github.com/larsbroer94/eindspel#abstract-class)
+- [x] [Namespaces](https://github.com/larsbroer94/eindspel#namespaces)
+- [x] [Polymorphism](https://github.com/larsbroer94/eindspel#polymorphism)
+- [x] [Enumerations](https://github.com/larsbroer94/eindspel#enumerations)
+- [x] [Game Loop](https://github.com/larsbroer94/eindspel#game-loop)
 - [x] Readme.md file waarin bovenstaande wordt toegelicht 
 
 # Installatie instructies
 In mijn project is als Library Isomer gebruikt. Hier hoef je geen extra dingen voor te doen. Dus het is een kwestie van forken en openen. Ook is hij te spelen via de live omgeving van Github.
 
 # Programmeerprincipes toegepast
-[Interface](https://github.com/larsbroer94/eindspel#interface),
+Zie onderstaande info.
+<!--[Interface](https://github.com/larsbroer94/eindspel#interface),
 [Static](https://github.com/larsbroer94/eindspel#static-utility-method),
 [Abstract](https://github.com/larsbroer94/eindspel#abstract-class),
 [Singleton](https://github.com/larsbroer94/eindspel#singleton),
@@ -46,7 +48,7 @@ In mijn project is als Library Isomer gebruikt. Hier hoef je geen extra dingen v
 [Library](https://github.com/larsbroer94/eindspel#library),
 [Game Loop](https://github.com/larsbroer94/eindspel#game-loop),
 [Encapsulation](https://github.com/larsbroer94/eindspel#encapsulation),
-[Inheritance](https://github.com/larsbroer94/eindspel#inheritance)
+[Inheritance](https://github.com/larsbroer94/eindspel#inheritance)-->
 
 ### Interface
 ```
