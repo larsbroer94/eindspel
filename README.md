@@ -3,7 +3,7 @@ Het eindproduct voldoet zeker aan de eisen, en Lars is al goed op weg.
 Het deelproduct bevat alleen nog niet alle programmeerprincipes. De singleton en strategy patterns ontbreken nog (Singleton heb ik erbij geschreven als toevoeging).
 
 # Review 2 - ???
--
+Not yet
 
 # EndGame Lars Broer
 
