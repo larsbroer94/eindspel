@@ -152,6 +152,119 @@ public notify() {
 ```
 Observer in mijn Bird, Notify in mijn poop.
 
+### Namespaces
+```
+namespace PoopObject {
+    export class Poop extends GameObject implements Observer {
+```
+Poop is een Namespace, genaamd nu 'PoopObject'. Is dus nu ook aan te roepen op de voglende manier:
+```
+private poop : PoopObject.Poop;
+```
+### Polymorphism
+```
+window.addEventListener("keydown", (e) => this.onKeyDown(e)); // ES6 arrow function ipv .bind
+window.addEventListener("keyup", (e) => this.onKeyUp(e)); // ES6 arrow function ipv .bind
+```
+```
+   private onKeyDown(event: KeyboardEvent): void {
+
+        switch (event.keyCode) {
+            case appVars.keys.UP:
+                this.behavior.onUp();
+                this.upSpeed = appVars.speeds.UP;
+                break;
+        [......]
+    }
+```
+Polymorphism gebruikt in het keyboardevent (Bewegen van vogel / poepen).
+
+### Enumerations
+```
+        enum GameActive {
+            YES,
+            NO
+        }
+
+        private activeGame : GameActive = GameActive.YES;
+
+        if(this.activeGame == GameActive.YES) {
+            console.log('The game is now playing');
+        } else {
+            console.log('The game has not started yet.');
+        }
+```
+Enumerations gebruikt bij het controleren of de game active is of niet. Kan je gebruiken als ik bijv zou willen dat er ook een pause functie komt. 
+
+### Library
+Als game library heb ik gekozen voor Isomer, een library gemaakt om objecten te creeëren. 
+Links van het speelscherm zie je de 3 blokjes gecreeërd in een canvas m.b.v. Isomer.
+
+Deze waarschuwen de speler dat je of te hoog, of te laag vliegt. In het spel veranderd ook de poepfunctie naar aanleiding van de hoogte van je vogel. 
+
+Voor het gemak heb ik deze blokken getekend in de bird class, bij de update functie.
+```
+        var iso = new Isomer(document.getElementById("art"));  
+
+        var Shape = Isomer.Shape;
+        var Point = Isomer.Point;
+
+        var red = new Isomer.Color(160, 50, 60);
+        var green = new Isomer.Color(37, 127, 49);
+        var cube = Shape.Prism(Point.ORIGIN);
+
+        if(this.y < 100) {
+            console.log('Lager dan 100');
+                    iso.add(cube);
+                    iso.add(cube.translate(0, 0, 1.1));
+                    iso.add(cube.translate(0, 0, 2.2), red);  
+        } else if (this.y >= 100 && this.y < 250) {
+            console.log('Tussen 100 en 250');
+                    iso.add(cube);
+                    iso.add(cube.translate(0, 0, 1.1), green);
+                    iso.add(cube.translate(0, 0, 2.2));  
+        } else if (this.y > 250) {
+            console.log('Groter dan 250');
+                    iso.add(cube.translate(0, 0, 0.0), red);
+                    iso.add(cube.translate(0, 0, 1.1));
+                    iso.add(cube.translate(0, 0, 2.2));  
+        }
+```
+
+Let op: Omdat ik geen defenitions map heb geeft hij aan dat hij Isomer niet herkent, maar dit is niet van toepassing.
+
+### Game Loop
+```
+    private constructor() {
+        this.bird = new Bird(this); // 'this' niet meer meegegeven, werd niet gebruikt.
+        this.signCreator();
+        requestAnimationFrame(() => this.gameLoop());
+
+        if(this.activeGame == GameActive.YES) {
+            console.log('The game is now playing');
+        } else {
+            console.log('The game has not started yet.');
+        }
+    }
+```
+```
+    private gameLoop(){
+    this.bird.update();
+    this.trafficObject.move();
+
+    // CollisionCheck
+    if(this.collisionCheck(this.trafficObject, this.bird)) this.endGame();
+
+    // Score add
+    if (this.activeGame == GameActive.YES) {
+        this.score ++;
+        document.getElementById("score").innerHTML = "Score : "+ this.score;
+        requestAnimationFrame(() => this.gameLoop());
+    }
+}
+```
+Gameloop gemaakt die zichzelf aanroept.
+
 ### Encapsulation
 ```
 class Game {
