@@ -34,6 +34,19 @@ Wat op dit moment af is:
 In mijn project is als Library Isomer gebruikt. Hier hoef je geen extra dingen voor te doen. Dus het is een kwestie van forken en openen. Ook is hij te spelen via de live omgeving van Github.
 
 # Programmeerprincipes toegepast
+[Interface](https://github.com/larsbroer94/eindspel#interface),
+[Static](https://github.com/larsbroer94/eindspel#static-utility-method),
+[Abstract](https://github.com/larsbroer94/eindspel#abstract-class),
+[Singleton](https://github.com/larsbroer94/eindspel#singleton),
+[Strategy Pattern](https://github.com/larsbroer94/eindspel#strategy-pattern),
+[Observer](https://github.com/larsbroer94/eindspel#observer),
+[Namespaces](https://github.com/larsbroer94/eindspel#namespaces),
+[Polymorphism](https://github.com/larsbroer94/eindspel#polymorphism),
+[Enumerations](https://github.com/larsbroer94/eindspel#enumerations),
+[Library](https://github.com/larsbroer94/eindspel#library),
+[Game Loop](https://github.com/larsbroer94/eindspel#game-loop),
+[Encapsulation](https://github.com/larsbroer94/eindspel#encapsulation),
+[Inheritance](https://github.com/larsbroer94/eindspel#inheritance)
 
 ### Interface
 ```
