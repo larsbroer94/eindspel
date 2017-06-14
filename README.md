@@ -13,9 +13,7 @@ Onderstaand is een UML te vinden.
 Wat op dit moment af is:
 - Alles, alleen is er geen Human meer gemaakt.
 
-# Installatie instructies
-In mijn project is als Library Isomer gebruikt. Hier hoef je geen extra dingen voor te doen. Dus het is een kwestie van forken en openen. Ook is hij te spelen via de live omgeving van Github.
-
+# Vereisten
 - [x] Klassendiagram
 - [x] Speelbare game met begin en eind, zonder bugs
 - [x] Gebruik een Library
@@ -31,6 +29,9 @@ In mijn project is als Library Isomer gebruikt. Hier hoef je geen extra dingen v
 - [x] enumeraties
 - [x] Game Loop
 - [x] Readme.md file waarin bovenstaande wordt toegelicht 
+
+# Installatie instructies
+In mijn project is als Library Isomer gebruikt. Hier hoef je geen extra dingen voor te doen. Dus het is een kwestie van forken en openen. Ook is hij te spelen via de live omgeving van Github.
 
 # Programmeerprincipes toegepast
 
@@ -62,6 +63,16 @@ public static getInstance() : Game {
 ```
 Voor mijn Singleton heb ik een static gebruikt.
 
+### Abstract Class
+```
+abstract class GameObject {
+
+......
+
+}
+```
+Abstract Class is GameObject, teveel code om alles te kopieren in mijn ReadMe.
+
 ### Singleton
 ```
 public static instance : Game;
@@ -79,6 +90,67 @@ window.addEventListener("load", function() {
     Game.getInstance();
 ```
 De Singleton in mijn Main.
+
+### Strategy Pattern
+```
+interface BirdBehavior {
+    bird : Bird;
+    
+    birdAction();
+    onSpace();
+    onRight();
+    onLeft();
+    onUp();
+    onDown();
+}
+```
+In Bird:
+```
+this.behavior = new Moving(this);
+```
+
+In Moving:
+```
+onSpace() {
+    this.bird.behavior = new Pooping(this.bird);
+}
+```
+Als Strategy Pattern heb ik BirdBehavior gemaakt die kan vliegen of poepen.
+
+### Observer
+In Bird:
+```
+public observers : Array<Observer> = new Array<Observer>();
+
+        if (this.y < 100) {
+            for(var i = 0; i < this.observers.length; i++) {
+                this.observers[i].notify();
+            }
+        }
+
+        public subscribe(o : Observer) {
+        // console.log('Subscribed!');
+        this.observers.push(o);
+    }
+
+    public unsubscribe(o : Observer): void {
+        for(var i = 0; i < this.observers.length; i++) {
+            if(this.observers[i] == o) {
+                this.observers.splice(i, 1);
+            }
+        }
+        // console.log('Unsubscribed!');
+    }
+```
+In Poop:
+```
+public notify() {
+    //Notify
+    this.speed = 50;
+    console.log('Notified');
+}
+```
+Observer in mijn Bird, Notify in mijn poop.
 
 ### Encapsulation
 ```
