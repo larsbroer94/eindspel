@@ -6,6 +6,7 @@ Het deelproduct bevat alleen nog niet alle programmeerprincipes. De singleton en
 Not yet
 
 # EndGame Lars Broer
+Deze game is live te spelen op: [https://larsbroer94.github.io/eindspel/dist/](https://larsbroer94.github.io/eindspel/dist/)
 
 ### UML
 Onderstaand is een UML te vinden.
@@ -35,6 +36,8 @@ Wat op dit moment af is:
 
 # Installatie instructies
 In mijn project is als Library Isomer gebruikt. Hier hoef je geen extra dingen voor te doen. Dus het is een kwestie van forken en openen. Ook is hij te spelen via de live omgeving van Github.
+
+Live: [https://larsbroer94.github.io/eindspel/dist/](https://larsbroer94.github.io/eindspel/dist/)
 
 # Programmeerprincipes toegepast
 Zie onderstaande info.
