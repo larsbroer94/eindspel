@@ -69,6 +69,12 @@ trafficsign {
     width: 204px; 
 }
 
+poop {
+    background-image: url(../images/poo.png);
+    height: 92px;
+    width: 78px;
+}
+
 
 
 @keyframes cloudanimation {
@@ -79,4 +85,9 @@ trafficsign {
   100% {
     transform: translate(-150px, 30px);
   }
+}
+
+#art {
+  width: 400px;
+  height: 300px;
 }

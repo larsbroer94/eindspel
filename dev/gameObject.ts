@@ -1,4 +1,4 @@
-class GameObject {
+abstract class GameObject {
 
     private _x : number = 0;
     private _y : number = 0;

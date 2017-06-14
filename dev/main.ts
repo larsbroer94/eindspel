@@ -1,13 +1,20 @@
 /// <reference path="bird.ts"/>
+/// <reference path="poop.ts"/>
 /// <reference path="trafficObject.ts"/>
+
+        enum GameActive {
+            YES,
+            NO
+        }
 
 class Game {
     private bird : Bird;
     private trafficObject : TrafficObject;
+    public poop : PoopObject.Poop;
     private randomNumber : number;
 
     private score : number = 0;
-    private activeGame : boolean = true;
+    private activeGame : GameActive = GameActive.YES;
 
     public static instance : Game;
 
@@ -20,9 +27,15 @@ class Game {
     }
     
     private constructor() {
-        this.bird = new Bird(); // 'this' niet meer meegegeven, werd niet gebruikt.
+        this.bird = new Bird(this); // 'this' niet meer meegegeven, werd niet gebruikt.
         this.signCreator();
         requestAnimationFrame(() => this.gameLoop());
+
+        if(this.activeGame == GameActive.YES) {
+            console.log('The game is now playing');
+        } else {
+            console.log('The game has not started yet.');
+        }
     }
 
     private gameLoop(){
@@ -33,26 +46,23 @@ class Game {
         if(this.collisionCheck(this.trafficObject, this.bird)) this.endGame();
 
         // Score add
-        if (this.activeGame == true) {
+        if (this.activeGame == GameActive.YES) {
             this.score ++;
             document.getElementById("score").innerHTML = "Score : "+ this.score;
+            requestAnimationFrame(() => this.gameLoop());
         }
-
-        // Gameloop
-        requestAnimationFrame(() => this.gameLoop());
-
     }
 
     public endGame(){
-        this.activeGame = false;
+        
+        this.activeGame = GameActive.NO;
         console.log('collision');
         document.getElementById("score").innerHTML = "Score : "+ this.score +" Game over!";
     }
 
     public signCreator() {
-        
         this.randomNumber = Math.round(Math.random() * 10);
-        console.log(this.randomNumber);
+        // console.log(this.randomNumber);
 
         if (this.randomNumber <= 5) 
         {

@@ -17,7 +17,6 @@ class TrafficObject extends GameObject {
         this.x = 800;
 
         this.move();
-
     }
 
     public move():void {
@@ -32,6 +31,5 @@ class TrafficObject extends GameObject {
             this.g.signCreator();
             this.div.remove();
         }
-   
     }
 }
