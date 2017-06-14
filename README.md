@@ -11,31 +11,74 @@ Onderstaand is een UML te vinden.
 ![UML](UML.png?raw=true "UML")
 
 Wat op dit moment af is:
-- Game.ts
-- GameObject.ts
-- Bird.ts
-- TrafficObject.ts
-- TrafficSign.ts
-- TrafficLight.ts
-
-Wat nog gedaan moet worden:
-- Human.ts
-- Poop.ts
-- BirdBehaviour met Poop en Move
+- Alles, alleen is er geen Human meer gemaakt.
 
 # Installatie instructies
-Omdat het hier gaat om een simpele typescript game zonder libraries is het een kwestie van forken en openen. Ook is hij te spelen via de live omgeving van Github.
+In mijn project is als Library Isomer gebruikt. Hier hoef je geen extra dingen voor te doen. Dus het is een kwestie van forken en openen. Ook is hij te spelen via de live omgeving van Github.
+
+- [x] Klassendiagram
+- [x] Speelbare game met begin en eind, zonder bugs
+- [x] Gebruik een Library
+- [x] encapsulation, composition, inheritance (PRG 4)
+- [x] Singleton
+- [x] Observer
+- [x] Strategy
+- [x] interface
+- [x] static
+- [x] abstract
+- [x] namespaces
+- [x] polymorphism
+- [x] enumeraties
+- [x] Game Loop
+- [x] Readme.md file waarin bovenstaande wordt toegelicht 
 
 # Programmeerprincipes toegepast
 
 ### Interface
-Op dit moment is er nog geen interface gebruikt. Dit gaat echter plaatsvinden via het Strategy Pattern (zie UML).
+```
+interface BirdBehavior {
+    bird : Bird;
+    
+    birdAction();
+    onSpace();
+    onRight();
+    onLeft();
+    onUp();
+    onDown();
+}
+```
+Hier is een interface gemaakt, die tegelijkertijd dient als een Strategy Pattern. Ook heb ik nog een interface bij Observer.
 
 ### Static Utility Method
-Op dit moment nog geen static utility method. 
+```
+public static instance : Game;
+public static getInstance() : Game {
+
+    if (!Game.instance) {
+        Game.instance = new Game();
+    }
+    return Game.instance;
+}
+```
+Voor mijn Singleton heb ik een static gebruikt.
 
 ### Singleton
-Deze is as we speak in de maak, maar nog niet af dus niet mee gepusht. Nog kleine aanpassingen.
+```
+public static instance : Game;
+public static getInstance() : Game {
+
+    if (!Game.instance) {
+        Game.instance = new Game();
+    }
+    return Game.instance;
+}
+```
+```
+// load
+window.addEventListener("load", function() {
+    Game.getInstance();
+```
+De Singleton in mijn Main.
 
 ### Encapsulation
 ```
