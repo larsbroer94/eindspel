@@ -342,3 +342,114 @@ Gebruik maken van extensions (overerving)
         this.draw();
     }
 ```
+
+
+# review week 7 Bryan de Ronde
+
+### Klassediagram
+
+De klassediagram ziet er goed uit het klopt ook met hoe de code uiteindelijk is opgebouwd. Alleen in de UML staat er ook een class 
+human maar die is niet aanwezig in de code. 
+
+### speelbare game
+
+De game is speelbaar en het een een eind aan het spel. Hij heeft gewerkt met Enumerations of het spel actief is ja of nee.
+
+### library
+
+Er is een library gebruikt die isomer om de hoogte aan te geven van de vogel. Ik vind het zelf niet zo veel toevoegen aan het spel zelf. Ik zou er eerder voor kiezen voor een library met sound zodat er ook geluid in het spel zit.
+
+### Encapsulation
+
+Encapsulation is aan wezig in het spel er zit public private en protected ze zijn alle 3 aanwezig
+
+### Inheritance
+
+Inheritance zit in gameobject die word geextend voor bird en trafficObject. En trafficlight en trafficSign extenden weer van trafficObject. 
+
+### Singleton
+
+Singleton word gebruikt bij het aanroepen van de game met een game instantie.
+
+     public static getInstance() : Game {
+
+        if (!Game.instance) {
+            Game.instance = new Game();
+        }
+        return Game.instance;
+    }
+
+
+### Observer
+
+De obderver zit verwerkt in de vogel en de poop als de vogel boven een bepaalde y waarde komt. Dan krijgt de poop een notificatie dat die meer snelheid naar achter toe krijgt. Ik denk omdat er op meer hoogte ook meer wind staat.
+
+eventueele aanpassing
+
+Je had de bird ook een notificatie kunnen geven als er een obstakel op zijn pad aan komt. zodat je weet dat je moet bewegen.
+
+### Strategy pattern
+
+strategy pattern die zit er goed uit de bird heeft een behavior en dat is vliegen en poepen. zodat de volgen niet tegelijk kan bewegen en poepen tegelijkertijd.
+
+### Interface
+
+de interface zit verwerkt in het birdbehvior 
+
+    interface BirdBehavior {
+    bird : Bird;
+    
+    birdAction();
+    onSpace();
+    onRight();
+    onLeft();
+    onUp();
+    onDown();
+}
+
+### Abstract
+
+van gameobject is een abstract class gemaakt is denk ik ook de enige class waar een abstract gemaakt van kan worden.
+
+### namespaces
+
+De namespaces is gebruikt in de class poop naar met de namespace Poopobject. 
+
+### Polymorphism
+
+polymorphism is gebruikt bij een keyboard event gebruikt omdat er meerder toetsten worden aangesproken met een event.
+
+### Enumerations
+
+Word gebruikt of de game actief is ja of nee. als hij actief is word de gameloop afgespeeld.
+
+er zit nu geen pauze bij dus die heb ik toegegvoed als je de game evt op pauze wil hebben.
+
+### Gameloop
+
+de Gameloop is aanwezig.
+
+De eisen:
+
+- [x] Klassendiagram
+- [x] Speelbare game met begin en eind, zonder bugs
+- [x] [Library]
+- [x] [Encapsulation]
+- [x] [Inheritance]
+- [x] [Singleton]
+- [x] [Observer]
+- [x] [Strategy Pattern]
+- [x] [Interface]
+- [x] [Static]
+- [x] [Abstract]
+- [x] [Namespaces]
+- [x] [Polymorphism]
+- [x] [Enumerations]
+- [x] [Game Loop]
+- [x] Readme.md 
+
+
+Naar mijn inzicht is in deze game aan alle eisen voldaan en is er een goede voortgang geweest vanuit week 4. dus voor mij is dit een voldoende.
+
+Aangepast is de Emuerations en wat structuur in de code voor de rest zit alles in van de eisen in de game
+
