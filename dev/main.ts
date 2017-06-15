@@ -4,6 +4,7 @@
 
         enum GameActive {
             YES,
+            PAUZE,
             NO
         }
 

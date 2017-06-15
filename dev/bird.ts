@@ -10,14 +10,14 @@ class Bird extends GameObject implements Subject {
     public leftSpeed: number = 0;
     public rightSpeed: number = 0;
 
-    private game : Game;
-    private poop : PoopObject.Poop;
+    private game: Game;
+    private poop: PoopObject.Poop;
 
-    public behavior : BirdBehavior;
+    public behavior: BirdBehavior;
 
-    public observers : Array<Observer> = new Array<Observer>();
+    public observers: Array<Observer> = new Array<Observer>();
 
-    constructor(g : Game) {
+    constructor(g: Game) {
         super("bird", document.getElementById("container"));
         this.x = 50;
         this.y = 100;
@@ -100,7 +100,7 @@ class Bird extends GameObject implements Subject {
         this.draw();
 
         if (this.y < 100) {
-            for(var i = 0; i < this.observers.length; i++) {
+            for (var i = 0; i < this.observers.length; i++) {
                 this.observers[i].notify();
             }
         }
@@ -112,14 +112,14 @@ class Bird extends GameObject implements Subject {
         this.drawHeight();
     }
 
-    public subscribe(o : Observer) {
+    public subscribe(o: Observer) {
         // console.log('Subscribed!');
         this.observers.push(o);
     }
 
-    public unsubscribe(o : Observer): void {
-        for(var i = 0; i < this.observers.length; i++) {
-            if(this.observers[i] == o) {
+    public unsubscribe(o: Observer): void {
+        for (var i = 0; i < this.observers.length; i++) {
+            if (this.observers[i] == o) {
                 this.observers.splice(i, 1);
             }
         }
@@ -131,7 +131,7 @@ class Bird extends GameObject implements Subject {
 
         // Notitie van Lars: Isomer is niet herkenbaar omdat er geen defenition file is. 
         // Werkt verder prima alleen compiler heeft moeite mee!
-        var iso = new Isomer(document.getElementById("art"));  
+        var iso = new Isomer(document.getElementById("art"));
 
         var Shape = Isomer.Shape;
         var Point = Isomer.Point;
@@ -140,21 +140,21 @@ class Bird extends GameObject implements Subject {
         var green = new Isomer.Color(37, 127, 49);
         var cube = Shape.Prism(Point.ORIGIN);
 
-        if(this.y < 100) {
+        if (this.y < 100) {
             console.log('Lager dan 100');
-                    iso.add(cube);
-                    iso.add(cube.translate(0, 0, 1.1));
-                    iso.add(cube.translate(0, 0, 2.2), red);  
+            iso.add(cube);
+            iso.add(cube.translate(0, 0, 1.1));
+            iso.add(cube.translate(0, 0, 2.2), red);
         } else if (this.y >= 100 && this.y < 250) {
             console.log('Tussen 100 en 250');
-                    iso.add(cube);
-                    iso.add(cube.translate(0, 0, 1.1), green);
-                    iso.add(cube.translate(0, 0, 2.2));  
+            iso.add(cube);
+            iso.add(cube.translate(0, 0, 1.1), green);
+            iso.add(cube.translate(0, 0, 2.2));
         } else if (this.y > 250) {
             console.log('Groter dan 250');
-                    iso.add(cube.translate(0, 0, 0.0), red);
-                    iso.add(cube.translate(0, 0, 1.1));
-                    iso.add(cube.translate(0, 0, 2.2));  
+            iso.add(cube.translate(0, 0, 0.0), red);
+            iso.add(cube.translate(0, 0, 1.1));
+            iso.add(cube.translate(0, 0, 2.2));
         }
 
         // iso.add(cube);

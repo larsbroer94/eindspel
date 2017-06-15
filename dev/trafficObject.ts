@@ -2,12 +2,12 @@
 
 class TrafficObject extends GameObject {
 
-    private speed   : number    = 0;
-    private yPos    : number    = 0;
-    private g       : Game      ;
-    private tag     : string    ;
-                        
-    constructor(tag : string, yPos : number, g : Game) {
+    private speed: number = 0;
+    private yPos: number = 0;
+    private g: Game;
+    private tag: string;
+
+    constructor(tag: string, yPos: number, g: Game) {
         super(tag, document.getElementById("container"));
 
         this.tag = tag;
@@ -19,12 +19,12 @@ class TrafficObject extends GameObject {
         this.move();
     }
 
-    public move():void {
+    public move(): void {
         // de snelheid bij de x waarde optellen
         this.x -= this.speed;
-        
+
         // tekenen
-        this.div.style.transform ="translate("+this.x+"px,"+this.yPos+"px)";
+        this.div.style.transform = "translate(" + this.x + "px," + this.yPos + "px)";
 
         // Controleren op zijkant geraakt
         if (this.x <= -400) {
