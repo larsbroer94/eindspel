@@ -1,5 +1,9 @@
 class GameObject {
 
+    protected speed:number;
+    public width: number;
+    public height: number;
+
     private _x : number = 0;
     private _y : number = 0;
     private _div : HTMLElement;

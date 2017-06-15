@@ -89,3 +89,49 @@ Gebruik maken van extensions (overerving)
         this.draw();
     }
 ```
+### peer review week 4
+
+Het spel is een leuk spelletje en begint al goed vorm te krijgen.
+En het project ziet er netjes opgebouwd uit. En via de UML is te zien wat je er nog bij gaat maken.
+
+# Interface
+
+Een interface zit er nog niet in maar dat wil je gaan doen bij het gedrag van de vogel.
+Of die gaat poepen of vliegen. Dat is een goede optie
+
+Maar je zou ook evt een interface kunnen gebruiken bij de objecten waar je niet tegen aan mag botsen. Omdat er van die object telkens nieuwe worden gemaakt en meerdere.
+Daar zou je er ook voor kunnen kiezen om daar een interface te gebruiken.
+
+# Singelthon
+
+Op dit momnet zit er nog geen singelthon in het project. Ik zou er voor kiezen om singelthon te gebruiken bij je game classe zodat je die overal makkelijk kan aan roepen in het hele project. Ook omdat je je game class overal in je project gebruikt lijkt mij dat de beste optie.
+
+# Encapsulation
+
+Encapsulation heb je netjes gebruikt in je class gameObject je doet het nu alleen met 3 variabelen en dat zou met veel meer variabelen kunnen die je gebruikt in dit project. zoals de height en witdh die je in andere classes gebruikt.
+
+# Inheritance
+Je bent goed bezig met het extenden van classes maar ik denk dat je je class gameobject kan uit breiden om zo nog maar variballen op die manier te gebruiken. zoals de height, witdh, speed en de tag voor het div elemente. want die gebruik je in alle classes waar je het gameobject extend.
+
+# colision
+je colision werkt nu want hij detecteerd of je een object raakt. Je moet er alleen nog voor zorgen dat het spel stop was je iets raakt maar dat komt goed. 
+
+Als je van je colision detectie een aparte class maakt kan je die voor alle botsingen gebruiken die er gebeuren in het spel. zodat je maar een keer een colision dectection hoeft te maken. Daar kan je 2 objecten heen sturen waarvan je wil kijken of ze elkaar rakken. 
+
+# Aangepast in code
+Ik heb in gameObject speed height en witdh toegevoegd zodat die ook ge extend worden.
+
+een game.ts gemaakt en een main.ts
+
+In game.ts een de evt code voor singelthon
+
+
+
+
+
+
+
+
+
+
+
